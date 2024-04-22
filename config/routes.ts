@@ -31,9 +31,21 @@ export default [
   },
   {
     path: '/add/chart',
-    name: '智能分析',
+    name: '同步分析',
     icon: 'BarChartOutlined',
     component: './AddChart',
+  },
+  {
+    path: '/add/chart_async',
+    name: '异步分析',
+    icon: 'BarChartOutlined',
+    component: './AddChartAsync',
+  },
+  {
+    path: '/my/chart',
+    name: '我的图表',
+    icon: 'BarChartOutlined',
+    component: './MyChart',
   },
   {
     path: '/admin',

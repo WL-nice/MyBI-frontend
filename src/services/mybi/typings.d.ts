@@ -136,6 +136,14 @@ declare namespace API {
     id: number;
   };
 
+  type genChartByAiAsyncParams = {
+    genChartByAiRequest: GenChartByAiRequest;
+  };
+
+  type genChartByAiMqAsyncParams = {
+    genChartByAiRequest: GenChartByAiRequest;
+  };
+
   type genChartByAiParams = {
     genChartByAiRequest: GenChartByAiRequest;
   };
