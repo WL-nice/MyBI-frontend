@@ -10,6 +10,12 @@ const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
 
 /**
+ * 无需用户登录态的页面
+ */
+const NO_NEED_LOGIN_WHITE_LIST = ['/user/register', loginPath];
+
+
+/**
  * @see  https://umijs.org/zh-CN/plugins/plugin-initial-state
  * */
 export async function getInitialState(): Promise<{
@@ -24,15 +30,24 @@ export async function getInitialState(): Promise<{
     }
     return undefined;
   };
-  // 如果不是登录页面，执行
-  const { location } = history;
-  if (location.pathname !== loginPath) {
-    const currentUser = await fetchUserInfo();
-    return {
-      currentUser,
-    };
+  if (NO_NEED_LOGIN_WHITE_LIST.includes(history.location.pathname)) {
+    return {};
   }
-  return {};
+  const currentUser = await fetchUserInfo();
+  return {
+    // @ts-ignore
+    currentUser,
+  };
+
+  // // 如果不是登录页面，执行
+  // const { location } = history;
+  // if (location.pathname !== loginPath) {
+  //   const currentUser = await fetchUserInfo();
+  //   return {
+  //     currentUser,
+  //   };
+  // }
+  // return {};
 }
 
 // ProLayout 支持的api https://procomponents.ant.design/components/layout
@@ -52,6 +67,7 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
     footerRender: () => <Footer />,
     onPageChange: () => {
       const { location } = history;
+
       // 如果没有登录，重定向到 login
       if (!initialState?.currentUser && location.pathname !== loginPath) {
         history.push(loginPath);
