@@ -53,22 +53,29 @@ export default [
     icon: 'BarChartOutlined',
     component: './MyChart',
   },
+  // {
+  //   path: '/admin',
+  //   name: 'admin',
+  //   icon: 'crown',
+  //   access: 'canAdmin',
+  //   routes: [
+  //     {
+  //       path: '/admin',
+  //       redirect: '/admin/sub-page',
+  //     },
+  //     {
+  //       path: '/admin/sub-page',
+  //       name: 'sub-page',
+  //       component: './Admin',
+  //     },
+  //   ],
+  // },
   {
-    path: '/admin',
-    name: 'admin',
+    path: '/admin/user',
+    name: '用户管理',
     icon: 'crown',
     access: 'canAdmin',
-    routes: [
-      {
-        path: '/admin',
-        redirect: '/admin/sub-page',
-      },
-      {
-        path: '/admin/sub-page',
-        name: 'sub-page',
-        component: './Admin',
-      },
-    ],
+    component: './Admin/User',
   },
   {
     name: 'list.table-list',

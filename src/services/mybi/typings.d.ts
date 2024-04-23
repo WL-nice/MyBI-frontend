@@ -27,13 +27,6 @@ declare namespace API {
     description?: string;
   };
 
-  type BaseResponseListTeamUserVo = {
-    code?: number;
-    data?: TeamUserVo[];
-    message?: string;
-    description?: string;
-  };
-
   type BaseResponseLong = {
     code?: number;
     data?: number;
@@ -48,23 +41,9 @@ declare namespace API {
     description?: string;
   };
 
-  type BaseResponsePageTeam = {
-    code?: number;
-    data?: PageTeam;
-    message?: string;
-    description?: string;
-  };
-
   type BaseResponsePageUser = {
     code?: number;
     data?: PageUser;
-    message?: string;
-    description?: string;
-  };
-
-  type BaseResponseTeam = {
-    code?: number;
-    data?: Team;
     message?: string;
     description?: string;
   };
@@ -128,10 +107,6 @@ declare namespace API {
     id: number;
   };
 
-  type deleteTeamParams = {
-    teamId: number;
-  };
-
   type deleteUserParams = {
     id: number;
   };
@@ -154,20 +129,8 @@ declare namespace API {
     chartType?: string;
   };
 
-  type getTeamParams = {
-    id: number;
-  };
-
   type listChartByIdParams = {
     id: number;
-  };
-
-  type listTeamsByPageParams = {
-    teamQuery: TeamQuery;
-  };
-
-  type listTeamsParams = {
-    teamQuery: TeamQuery;
   };
 
   type OrderItem = {
@@ -189,20 +152,6 @@ declare namespace API {
     pages?: number;
   };
 
-  type PageTeam = {
-    records?: Team[];
-    total?: number;
-    size?: number;
-    current?: number;
-    orders?: OrderItem[];
-    optimizeCountSql?: PageTeam;
-    searchCount?: PageTeam;
-    optimizeJoinOfCountSql?: boolean;
-    maxLimit?: number;
-    countId?: string;
-    pages?: number;
-  };
-
   type PageUser = {
     records?: User[];
     total?: number;
@@ -217,80 +166,6 @@ declare namespace API {
     pages?: number;
   };
 
-  type Team = {
-    id?: number;
-    teamName?: string;
-    description?: string;
-    expireTime?: string;
-    userId?: number;
-    password?: string;
-    maxNum?: number;
-    teamStatus?: number;
-    createTime?: string;
-    updateTime?: string;
-    isDelete?: number;
-  };
-
-  type TeamAddRequest = {
-    teamName?: string;
-    description?: string;
-    expireTime?: string;
-    userId?: number;
-    password?: string;
-    maxNum?: number;
-    teamStatus?: number;
-  };
-
-  type TeamJoinRequest = {
-    teamId?: number;
-    password?: string;
-  };
-
-  type TeamQuery = {
-    pageSize?: number;
-    current?: number;
-    sortOrder?: string;
-    sortField?: string;
-    id?: number;
-    idList?: number[];
-    searchText?: string;
-    teamName?: string;
-    description?: string;
-    expireTime?: string;
-    userId?: number;
-    password?: string;
-    maxNum?: number;
-    teamStatus?: number;
-  };
-
-  type TeamQuitRequest = {
-    teamId?: number;
-  };
-
-  type TeamUpdateRequest = {
-    id?: number;
-    teamName?: string;
-    description?: string;
-    expireTime?: string;
-    password?: string;
-    teamStatus?: number;
-  };
-
-  type TeamUserVo = {
-    id?: number;
-    teamName?: string;
-    description?: string;
-    expireTime?: string;
-    userId?: number;
-    maxNum?: number;
-    teamStatus?: number;
-    createTime?: string;
-    updateTime?: string;
-    createUser?: UserVo;
-    hasJoin?: boolean;
-    hasJoinNum?: number;
-  };
-
   type User = {
     id?: number;
     username?: string;
@@ -302,6 +177,11 @@ declare namespace API {
     updateTime?: string;
     isDelete?: number;
     userRole?: number;
+  };
+
+  type UserAddRequest = {
+    username?: string;
+    userAccount?: string;
   };
 
   type UserLoginRequest = {
@@ -336,15 +216,5 @@ declare namespace API {
     userAccount?: string;
     avatarUrl?: string;
     userPassword?: string;
-  };
-
-  type UserVo = {
-    id?: number;
-    username?: string;
-    userAccount?: string;
-    avatarUrl?: string;
-    createTime?: string;
-    userStatus?: number;
-    userRole?: number;
   };
 }

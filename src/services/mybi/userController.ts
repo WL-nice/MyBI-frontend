@@ -2,6 +2,18 @@
 /* eslint-disable */
 import { request } from '@umijs/max';
 
+/** 此处后端没有提供注释 POST /user/add */
+export async function addUser(body: API.UserAddRequest, options?: { [key: string]: any }) {
+  return request<API.BaseResponseBoolean>('/user/add', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
 /** 此处后端没有提供注释 GET /user/current */
 export async function getCurrentUser(options?: { [key: string]: any }) {
   return request<API.BaseResponseUser>('/user/current', {
